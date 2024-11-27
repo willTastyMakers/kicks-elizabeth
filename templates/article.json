@@ -12,6 +12,10 @@
     "template": {
       "type": "template-article",
       "blocks": {
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {}
+        },
         "title": {
           "type": "article_title",
           "settings": {}
@@ -24,23 +28,22 @@
           "type": "article_publish_date",
           "settings": {}
         },
-        "featured_image": {
-          "type": "featured_image",
-          "settings": {}
-        },
         "content": {
           "type": "article_content",
           "settings": {}
         }
       },
       "block_order": [
+        "featured_image",
         "title",
         "author",
         "publish_date",
-        "featured_image",
         "content"
       ],
-      "settings": {}
+      "settings": {
+        "enable_author": true,
+        "enable_publish_date": true
+      }
     }
   },
   "order": [
