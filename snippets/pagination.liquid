@@ -1,0 +1,42 @@
+{% if pagination.pages > 0 %}
+   <nav
+     role= "navigation"
+     class="flex justify-center my-8"
+   >
+       {% if pagination.previous %}
+           <a href="{{  pagination.previous.url }}"
+              class="relative inline-flex items-center text-center w-32  px-6 py-2 border border-gray-600 cursor-pointer hover:bg-gray-600 hover:text-white rounded-lg mx-2"
+           {% unless pagination.previvous %}
+               aria-disabled="true"
+                   {% endunless %}>
+               {{ pagination.previous.title }}
+           </a>
+       {% endif %}
+         {% for part in pagination.parts %}
+             {% if part.is_link %}
+                  <a href="{{ part.url }}"
+                      class="relative inline-flex items-center text-center w-15  px-6 py-2 border border-gray-600 cursor-pointer hover:bg-gray-600 hover:text-white rounded-lg mx-2"
+                      {% if part.is_current %}
+                      aria-current="page"
+                      {% endif %}>
+                      {{ part.title }}
+                  </a>
+                {% else %}
+                    <span class="relative inline-flex items-center text-center w-15  px-6 py-2 border border-gray-600 cursor-pointer bg-gray-600 text-white rounded-lg mx-2">
+                        {{ part.title }}
+                    </span>
+                {% endif %}
+             
+         {% endfor %}
+       
+       {% if pagination.next %}
+       <a href="{{  pagination.next.url }}"
+          class="relative inline-flex items-center text-center  w-32  px-8 py-2 border border-gray-600 cursor-pointer hover:bg-gray-600 hover:text-white rounded-lg  mx-2"
+           {% unless pagination.next %}
+           aria-disabled="true"
+           {% endunless %}>
+           {{ pagination.next.title }}
+       </a>
+       {% endif %}
+   </nav>
+{% endif %}
